@@ -1,9 +1,10 @@
 import { fail } from 'assert'
+import { VALID_GUESSES } from "./validGuesses"
 
 import { WORDS } from './wordlist'
 
-// You may not want the list of solutions to be unique. In that case, disable this test
 describe('wordlist', () => {
+  // You may not want the list of solutions to be unique. In that case, disable this test
   test('words are unique', () => {
     const uniqueWords = Array.from(new Set(WORDS))
 
@@ -16,6 +17,16 @@ describe('wordlist', () => {
           fail(`The word ${w} is not unique.`)
         }
       })
+    }
+  })
+
+  test("valid guess for each word length exists", () => {
+    const validGuessLengths = new Set(VALID_GUESSES.map(validGuess => validGuess.length))
+
+    for (let word of WORDS) {
+      if (!validGuessLengths.has(word.length)) {
+        fail(`word ${word} has length ${word.length}, but no valid guess with this length exists`)
+      }
     }
   })
 })
