@@ -153,10 +153,6 @@ svg.cursor-pointer:hover {
   }
 }
 
-.shadowed {
-  text-shadow: 1px 1px 1px #000000;
-}
-
 @keyframes jiggle {
   0% {
     transform: translate(0, 0);
