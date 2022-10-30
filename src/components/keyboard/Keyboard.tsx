@@ -37,6 +37,7 @@ export const Keyboard = ({
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
+      if (e.repeat || e.ctrlKey || e.altKey || e.metaKey) return
       if (e.code === 'Enter') {
         onEnter()
       } else if (e.code === 'Backspace') {
@@ -49,9 +50,9 @@ export const Keyboard = ({
         }
       }
     }
-    window.addEventListener('keyup', listener)
+    window.addEventListener('keydown', listener)
     return () => {
-      window.removeEventListener('keyup', listener)
+      window.removeEventListener('keydown', listener)
     }
   }, [onEnter, onDelete, onChar])
 
