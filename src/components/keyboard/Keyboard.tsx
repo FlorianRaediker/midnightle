@@ -1,6 +1,7 @@
+import { BackspaceIcon } from "@heroicons/react/outline"
+import { CheckCircleIcon } from "@heroicons/react/solid"
 import { useEffect } from 'react'
 
-import { DELETE_TEXT, ENTER_TEXT } from '../../constants/strings'
 import { getStatuses } from '../../lib/statuses'
 import { localeAwareUpperCase } from '../../lib/words'
 import { Key } from './Key'
@@ -82,7 +83,7 @@ export const Keyboard = ({
       </div>
       <div className="flex justify-center">
         <Key grow="1.5" value="ENTER" onClick={onClick}>
-          {ENTER_TEXT}
+          <CheckCircleIcon className="w-5" />
         </Key>
         {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
           <Key
@@ -94,7 +95,7 @@ export const Keyboard = ({
           />
         ))}
         <Key grow="1.5" value="DELETE" onClick={onClick}>
-          {DELETE_TEXT}
+          <BackspaceIcon className="w-5"/>
         </Key>
       </div>
     </div>
