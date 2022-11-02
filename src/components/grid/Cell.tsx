@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 
 import { REVEAL_TIME_MS } from '../../constants/settings'
-import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 import { CharStatus } from '../../lib/statuses'
 
 type Props = {
@@ -22,24 +21,25 @@ export const Cell = ({
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
   const animationDelay = `${position * REVEAL_TIME_MS}ms`
-  const isHighContrast = getStoredIsHighContrastMode()
 
   const classes = classnames(
-    'xxshort:w-11 xxshort:h-11 short:text-xl short:w-12 short:h-12 w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-2xl font-bold rounded dark:text-white',
+    'xxshort:w-11 xxshort:h-11 short:text-xl short:w-12 short:h-12 w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-2xl font-bold rounded',
     {
-      'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600':
+      'bg-background border-empty':
         !status,
-      'border-black dark:border-slate-100': value && !status,
-      'absent bg-slate-400 dark:bg-slate-700 text-white border-slate-400 dark:border-slate-700':
+
+      'border-filledBorder text-filledText':
+        value && !status,
+
+      'absent bg-absent border-absent text-white':
         status === 'absent',
-      'correct bg-orange-500 text-white border-orange-500':
-        status === 'correct' && isHighContrast,
-      'present bg-cyan-500 text-white border-cyan-500':
-        status === 'present' && isHighContrast,
-      'correct bg-green-500 text-white border-green-500':
-        status === 'correct' && !isHighContrast,
-      'present bg-yellow-500 text-white border-yellow-500':
-        status === 'present' && !isHighContrast,
+
+      'present bg-present border-present text-white':
+        status === 'present',
+
+      'correct bg-correct border-correct text-white':
+        status === 'correct',
+
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
     }
