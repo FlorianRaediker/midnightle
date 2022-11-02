@@ -25,20 +25,15 @@ export const Cell = ({
   const classes = classnames(
     'xxshort:w-11 xxshort:h-11 short:text-xl short:w-12 short:h-12 w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-2xl font-bold rounded',
     {
-      'bg-background border-empty':
-        !status,
+      'bg-background border-empty': !status,
 
-      'border-filledBorder text-filledText':
-        value && !status,
+      'border-filledBorder text-filledText': value && !status,
 
-      'absent bg-absent border-absent text-white':
-        status === 'absent',
+      'absent bg-absent border-absent text-white': status === 'absent',
 
-      'present bg-present border-present text-white':
-        status === 'present',
+      'present bg-present border-present text-white': status === 'present',
 
-      'correct bg-correct border-correct text-white':
-        status === 'correct',
+      'correct bg-correct border-correct text-white': status === 'correct',
 
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,

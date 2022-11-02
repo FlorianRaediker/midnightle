@@ -22,7 +22,7 @@ export const Navbar = ({
   setIsSettingsModalOpen,
 }: Props) => {
   return (
-    <div className="flex justify-between items-center mx-5 h-12 short:h-auto sm:w-[550px] sm:mx-auto">
+    <div className="mx-5 flex h-12 items-center justify-between sm:mx-auto sm:w-[550px] short:h-auto">
       <div className="flex w-16 pr-2">
         <InformationCircleIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"

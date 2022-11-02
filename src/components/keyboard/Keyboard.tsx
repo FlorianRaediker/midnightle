@@ -1,5 +1,5 @@
-import { BackspaceIcon } from "@heroicons/react/outline"
-import { CheckCircleIcon } from "@heroicons/react/solid"
+import { BackspaceIcon } from '@heroicons/react/outline'
+import { CheckCircleIcon } from '@heroicons/react/solid'
 import { useEffect } from 'react'
 
 import { getStatuses } from '../../lib/statuses'
@@ -57,7 +57,7 @@ export const Keyboard = ({
   }, [onEnter, onDelete, onChar])
 
   return (
-    <div className="sm:w-[600px] sm:mx-auto">
+    <div className="sm:mx-auto sm:w-[600px]">
       <div className="mb-1 flex justify-center">
         {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
           <Key
@@ -70,7 +70,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="mb-1 flex justify-center">
-        <div className="basis-0 grow-[0.5]" />
+        <div className="grow-[0.5] basis-0" />
         {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((key) => (
           <Key
             value={key}
@@ -80,7 +80,7 @@ export const Keyboard = ({
             isRevealing={isRevealing}
           />
         ))}
-        <div className="basis-0 grow-[0.5]" />
+        <div className="grow-[0.5] basis-0" />
       </div>
       <div className="flex justify-center">
         <Key grow="1.5" value="ENTER" onClick={onClick}>
@@ -96,7 +96,7 @@ export const Keyboard = ({
           />
         ))}
         <Key grow="1.5" value="DELETE" onClick={onClick}>
-          <BackspaceIcon className="w-5"/>
+          <BackspaceIcon className="w-5" />
         </Key>
       </div>
     </div>

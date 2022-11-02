@@ -17,7 +17,7 @@ type Props = {
 export const Key = ({
   children,
   status,
-  grow = "1",
+  grow = '1',
   value,
   onClick,
   isRevealing,
@@ -29,11 +29,9 @@ export const Key = ({
     {
       'transition ease-in-out': isRevealing,
 
-      'bg-key hover:bg-key-hover active:bg-key-active':
-        !status,
+      'bg-key hover:bg-key-hover active:bg-key-active': !status,
 
-      'bg-absent text-white':
-        status === 'absent',
+      'bg-absent text-white': status === 'absent',
 
       'bg-present hover:bg-present-hover active:bg-present-active text-white':
         status === 'present',
@@ -45,7 +43,7 @@ export const Key = ({
 
   const styles = {
     transitionDelay: isRevealing ? `${keyDelayMs}ms` : 'unset',
-    flexGrow: grow
+    flexGrow: grow,
   }
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {

@@ -1,6 +1,6 @@
 import { fail } from 'assert'
-import { VALID_GUESSES } from "./validGuesses"
 
+import { VALID_GUESSES } from './validGuesses'
 import { WORDS } from './wordlist'
 
 describe('wordlist', () => {
@@ -20,12 +20,16 @@ describe('wordlist', () => {
     }
   })
 
-  test("valid guess for each word length exists", () => {
-    const validGuessLengths = new Set(VALID_GUESSES.map(validGuess => validGuess.length))
+  test('valid guess for each word length exists', () => {
+    const validGuessLengths = new Set(
+      VALID_GUESSES.map((validGuess) => validGuess.length)
+    )
 
     for (let word of WORDS) {
       if (!validGuessLengths.has(word.length)) {
-        fail(`word ${word} has length ${word.length}, but no valid guess with this length exists`)
+        fail(
+          `word ${word} has length ${word.length}, but no valid guess with this length exists`
+        )
       }
     }
   })
