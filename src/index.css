@@ -25,7 +25,7 @@
 }
 
 .dark {
-  --color-background: theme('colors.slate.900');
+  --color-background: theme('colors.black');
 
   --color-empty: theme('colors.slate.600');
   --color-filled-text: theme('colors.slate.300');
