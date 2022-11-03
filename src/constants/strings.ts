@@ -1,7 +1,7 @@
 export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 
 // ALERTS
-export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
+export const WIN_MESSAGES = ['Gorgeous', 'Enchanting', 'Sweet']
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters'
 export const WORD_NOT_FOUND_MESSAGE = 'Word not found'
@@ -15,34 +15,34 @@ export const DISCOURAGE_INAPP_BROWSER_TEXT =
   "You are using an embedded browser and may experience problems sharing or saving your results. We encourage you rather to use your device's default browser."
 
 // MODALS
-export const INFO_TITLE = 'How to play'
+export const INFO_TITLE = 'How To Play'
 export const INFO_TEXT =
-  'Guess the word in 6 tries. After each guess, the color of the tiles will change to show how close your guess was to the word.'
-export const INFO_CORRECT_WORD = 'WEARY'
+  'Guess the Midnightle in 6 tries. After each guess, the color of the tiles will change to show how close your guess was to the word.'
+export const INFO_CORRECT_WORD = 'WITCH'
 export const INFO_CORRECT_INDEX = 0
 export const INFO_CORRECT =
   'The letter W is in the word and in the correct spot.'
-export const INFO_PRESENT_WORD = 'PILOT'
-export const INFO_PRESENT_INDEX = 2
-export const INFO_PRESENT = 'The letter L is in the word but in the wrong spot.'
-export const INFO_ABSENT_WORD = 'VAGUE'
+export const INFO_PRESENT_WORD = 'BETTY'
+export const INFO_PRESENT_INDEX = 1
+export const INFO_PRESENT = 'The letter E is in the word but in the wrong spot.'
+export const INFO_ABSENT_WORD = 'SCARF'
 export const INFO_ABSENT_INDEX = 3
-export const INFO_ABSENT = 'The letter U is not in the word in any spot.'
+export const INFO_ABSENT = 'The letter R is not in the word in any spot.'
 
 export const SETTINGS_TITLE = 'Settings'
 export const HARD_MODE_TITLE = 'Hard Mode'
 export const HARD_MODE_ALERT_MESSAGE =
   'Hard Mode can only be enabled at the start!'
 export const HARD_MODE_DESCRIPTION =
-  'Any revealed hints must be used in subsequent guesses'
+  'any revealed hints must be used in subsequent guesses'
 export const DARK_MODE_TITLE = 'Dark Mode'
-export const DARK_MODE_DESCRIPTION = ''
-export const HIGH_CONTRAST_TITLE = 'High Contrast Mode'
-export const HIGH_CONTRAST_MODE_DESCRIPTION = 'For improved color vision'
+export const DARK_MODE_DESCRIPTION = 'meet me at midnight'
+export const HIGH_CONTRAST_TITLE = 'High-contrast'
+export const HIGH_CONTRAST_MODE_DESCRIPTION = 'for improved color vision'
 
 export const STATISTICS_TITLE = 'Statistics'
 export const GUESS_DISTRIBUTION_TEXT = 'Guess Distribution'
-export const NEW_WORD_TEXT = 'New word in'
+export const NEW_WORD_TEXT = 'New Midnightle in'
 export const SHARE_TEXT = 'Share'
 export const SHARE_FAILURE_TEXT =
   'Unable to share the results. This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.'

@@ -68,13 +68,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       )}
 
       <p className="mt-6 text-sm italic text-gray-500 dark:text-gray-300">
-        This is an open source version of the word guessing game we all know and
-        love -{' '}
+        This is a clone of the game Wordle themed around Taylor Swift's
+        Midnights –{' '}
         <a
-          href="https://github.com/cwackerfuss/react-wordle"
+          href="https://github.com/FlorianRaediker/midnightle"
           className="font-bold underline"
         >
-          check out the code here
+          check out the source code here
         </a>{' '}
       </p>
     </BaseModal>
