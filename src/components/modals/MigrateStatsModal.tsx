@@ -1,5 +1,12 @@
 import { useState } from 'react'
 
+import {
+  MIGRATE_DESCRIPTION,
+  MIGRATE_NEW,
+  MIGRATE_OLD,
+  MIGRATE_SELECT_TEXT,
+  MIGRATE_TITLE,
+} from '../../constants/strings'
 import { GameStats, StoredGameState } from '../../lib/localStorage'
 import { EmigratePanel } from '../stats/EmigratePanel'
 import { ImmigratePanel } from '../stats/ImmigratePanel'
@@ -19,20 +26,15 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
   const [isEmigrateVisible, setIsEmigrateVisible] = useState(true)
 
   return (
-    <BaseModal
-      title="Transfer your statistics"
-      isOpen={isOpen}
-      handleClose={handleClose}
-    >
+    <BaseModal title={MIGRATE_TITLE} isOpen={isOpen} handleClose={handleClose}>
       <p className="mt-4 mb-4 text-sm text-gray-500 dark:text-gray-300">
-        Copy the migration code on your old device and paste into the input on
-        the new device.
+        {MIGRATE_DESCRIPTION}
       </p>
 
       <div className="w-full columns-3 gap-0">
         <div className="mb-4 flex items-center">
           <p className="mb-0 flex text-sm font-medium text-gray-900 dark:text-gray-300">
-            This is my:
+            {MIGRATE_SELECT_TEXT}
           </p>
         </div>
         <div className="mb-4 flex items-center">
@@ -50,7 +52,7 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
             htmlFor="emigrate-radio-button"
             className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
-            old device
+            {MIGRATE_OLD}
           </label>
         </div>
         <div className="flex items-center">
@@ -68,7 +70,7 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
             htmlFor="immigrate-radio-button"
             className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
-            new device
+            {MIGRATE_NEW}
           </label>
         </div>
       </div>

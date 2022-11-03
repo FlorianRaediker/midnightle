@@ -1,6 +1,11 @@
 import { DuplicateIcon } from '@heroicons/react/outline'
 import { useState } from 'react'
 
+import {
+  MIGRATE_COPIED,
+  MIGRATE_COPY,
+  MIGRATE_COPY_CODE,
+} from '../../constants/strings'
 import { copyTextToClipboard } from '../../lib/clipboard'
 import { encrypt } from '../../lib/encryption'
 import { loadGameStateFromLocalStorage } from '../../lib/localStorage'
@@ -9,7 +14,7 @@ import { MigrationStats } from '../modals/MigrateStatsModal'
 
 export const EmigratePanel = () => {
   const [isCopyButtonEnabled, setIsCopyButtonEnabled] = useState(true)
-  const [copyButtonText, setCopyButtonText] = useState('Copy')
+  const [copyButtonText, setCopyButtonText] = useState(MIGRATE_COPY)
   const stats = loadStats()
   const gameState = loadGameStateFromLocalStorage(true)
 
@@ -22,7 +27,7 @@ export const EmigratePanel = () => {
 
   const copyEmigrationCodeToClipboard = () => {
     copyTextToClipboard(emigrationCode)
-    setCopyButtonText('Copied!')
+    setCopyButtonText(MIGRATE_COPIED)
     setIsCopyButtonEnabled(false)
   }
 
@@ -32,7 +37,7 @@ export const EmigratePanel = () => {
         htmlFor="message"
         className="mb-2 block text-left text-sm font-medium text-gray-900 dark:text-gray-400"
       >
-        Copy your migration code:
+        {MIGRATE_COPY_CODE}
       </label>
       <textarea
         id="emigration-code"
