@@ -73,6 +73,3 @@ export const DATEPICKER_TITLE = 'Choose a past date'
 export const DATEPICKER_CHOOSE_TEXT = 'Choose'
 export const DATEPICKER_TODAY_TEXT = 'today'
 export const ARCHIVE_GAMEDATE_TEXT = 'Game date'
-
-export const ENTER_TEXT = 'Enter'
-export const DELETE_TEXT = 'Delete'
