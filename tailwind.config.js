@@ -1,4 +1,4 @@
-const colors = require("tailwindcss/colors")
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -11,29 +11,30 @@ module.exports = {
         xxshort: { raw: '(max-height: 490px)' },
       },
       colors: {
-        background: "var(--color-background)",
+        primary: '#83738f',
+        background: 'var(--color-background)',
 
         // cells (hover: and active: for keyboard)
-        empty: "var(--color-empty)",
-        filledText: "var(--color-filled-text)",
-        filledBorder: "var(--color-filled-border)",
-        absent: "var(--color-absent)",
+        empty: 'var(--color-empty)',
+        filledText: 'var(--color-filled-text)',
+        filledBorder: 'var(--color-filled-border)',
+        absent: 'var(--color-absent)',
         present: {
-          DEFAULT: "var(--color-present)",
-          hover: "var(--color-present-hover)",
-          active: "var(--color-present-active)",
+          DEFAULT: 'var(--color-present)',
+          hover: 'var(--color-present-hover)',
+          active: 'var(--color-present-active)',
         },
         correct: {
-          DEFAULT: "var(--color-correct)",
-          hover: "var(--color-correct-hover)",
-          active: "var(--color-correct-active)",
+          DEFAULT: 'var(--color-correct)',
+          hover: 'var(--color-correct-hover)',
+          active: 'var(--color-correct-active)',
         },
 
         // keyboard
         key: {
-          DEFAULT: "var(--color-key)",
-          hover: "var(--color-key-hover)",
-          active: "var(--color-key-active)",
+          DEFAULT: 'var(--color-key)',
+          hover: 'var(--color-key-hover)',
+          active: 'var(--color-key-active)',
         },
       },
     },
