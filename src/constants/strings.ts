@@ -66,7 +66,7 @@ export const MIGRATE_COPY = 'Copy'
 export const MIGRATE_COPIED = 'Copied!'
 export const MIGRATE_SAVE = 'Save'
 export const MIGRATE_CONFIRM =
-  'Are you sure you want to override the statistics on this device? This action is not reversable.'
+  'Are you sure you want to override the statistics on this device? This action is not reversible.'
 export const MIGRATE_RELOAD = 'The site will now reload.'
 
 export const DATEPICKER_TITLE = 'Choose a past date'
