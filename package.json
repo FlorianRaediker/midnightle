@@ -1,5 +1,6 @@
 {
-  "name": "game",
+  "name": "midnightle",
+  "homepage": "https://midnightle.flra.eu",
   "version": "0.1.0",
   "private": true,
   "scripts": {
