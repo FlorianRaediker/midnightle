@@ -18,6 +18,7 @@ import {
   DISCOURAGE_INAPP_BROWSERS,
   LONG_ALERT_TIME_MS,
   MAX_CHALLENGES,
+  PLAUSIBLE_TRACK_GAMES,
   REVEAL_TIME_MS,
   WELCOME_INFO_MODAL_MS,
 } from './constants/settings'
@@ -51,6 +52,7 @@ import {
   solutionGameDate,
   unicodeLength,
 } from './lib/words'
+import plausible from './plausible'
 
 function App() {
   const isLatestGame = getIsLatestGame()
@@ -249,9 +251,25 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
+      const reportGameToPlausible = (won: boolean) => {
+        if (PLAUSIBLE_TRACK_GAMES) {
+          plausible('Game', {
+            props: {
+              tries: won ? guesses.length + 1 : 'X',
+              guesses: [...guesses, currentGuess].join(','),
+              'current streak': stats.currentStreak,
+              'best streak': stats.bestStreak,
+              'total games': stats.totalGames,
+              'success rate': stats.successRate,
+            },
+          })
+        }
+      }
+
       if (winningWord) {
         if (isLatestGame) {
           setStats(addStatsForCompletedGame(stats, guesses.length))
+          reportGameToPlausible(true)
         }
         return setIsGameWon(true)
       }
@@ -259,6 +277,7 @@ function App() {
       if (guesses.length === MAX_CHALLENGES - 1) {
         if (isLatestGame) {
           setStats(addStatsForCompletedGame(stats, guesses.length + 1))
+          reportGameToPlausible(false)
         }
         setIsGameLost(true)
         showErrorAlert(CORRECT_WORD_MESSAGE(solution), {
