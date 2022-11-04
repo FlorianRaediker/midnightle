@@ -11,3 +11,5 @@ export const BLOWFISH_KEY = 'xcQUAHsik#Thq&LG*8es2DsZ$3bw^e'
 export const BLOWFISH_IV = '#45XmF^w'
 export const ENABLE_ARCHIVED_GAMES = false
 export const DATE_LOCALE = enUS
+export const FIRST_GAME_DATE = new Date(2022, 10, 4)
+export const GAME_PERIOD_IN_DAYS = 1

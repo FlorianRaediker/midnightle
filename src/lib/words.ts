@@ -8,16 +8,16 @@ import {
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import queryString from 'query-string'
 
-import { ENABLE_ARCHIVED_GAMES } from '../constants/settings'
+import {
+  ENABLE_ARCHIVED_GAMES,
+  FIRST_GAME_DATE,
+  GAME_PERIOD_IN_DAYS,
+} from '../constants/settings'
 import { NOT_CONTAINED_MESSAGE, WRONG_SPOT_MESSAGE } from '../constants/strings'
 import { VALID_GUESSES } from '../constants/validGuesses'
 import { WORDS } from '../constants/wordlist'
 import { getToday } from './dateutils'
 import { getGuessStatuses } from './statuses'
-
-// 1 January 2022 Game Epoch
-export const firstGameDate = new Date(2022, 0)
-export const periodInDays = 1
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -91,28 +91,29 @@ export const localeAwareUpperCase = (text: string) => {
 
 export const getLastGameDate = (today: Date) => {
   const t = startOfDay(today)
-  let daysSinceLastGame = differenceInDays(firstGameDate, t) % periodInDays
+  let daysSinceLastGame =
+    differenceInDays(FIRST_GAME_DATE, t) % GAME_PERIOD_IN_DAYS
   return addDays(t, -daysSinceLastGame)
 }
 
 export const getNextGameDate = (today: Date) => {
-  return addDays(getLastGameDate(today), periodInDays)
+  return addDays(getLastGameDate(today), GAME_PERIOD_IN_DAYS)
 }
 
 export const isValidGameDate = (date: Date) => {
-  if (date < firstGameDate || date > getToday()) {
+  if (date < FIRST_GAME_DATE || date > getToday()) {
     return false
   }
 
-  return differenceInDays(firstGameDate, date) % periodInDays === 0
+  return differenceInDays(FIRST_GAME_DATE, date) % GAME_PERIOD_IN_DAYS === 0
 }
 
 export const getIndex = (gameDate: Date) => {
-  let start = firstGameDate
+  let start = FIRST_GAME_DATE
   let index = -1
   do {
     index++
-    start = addDays(start, periodInDays)
+    start = addDays(start, GAME_PERIOD_IN_DAYS)
   } while (start <= gameDate)
 
   return index
@@ -146,7 +147,7 @@ export const getGameDate = () => {
   const parsed = queryString.parse(window.location.search)
   try {
     const d = startOfDay(parseISO(parsed.d!.toString()))
-    if (d >= getToday() || d < firstGameDate) {
+    if (d >= getToday() || d < FIRST_GAME_DATE) {
       setGameDate(getToday())
     }
     return d

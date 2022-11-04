@@ -3,19 +3,18 @@ import { addDays, format, startOfDay } from 'date-fns'
 import { useState } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 
-import { DATE_LOCALE } from '../../constants/settings'
+import {
+  DATE_LOCALE,
+  FIRST_GAME_DATE,
+  GAME_PERIOD_IN_DAYS,
+} from '../../constants/settings'
 import {
   DATEPICKER_CHOOSE_TEXT,
   DATEPICKER_TITLE,
   DATEPICKER_TODAY_TEXT,
 } from '../../constants/strings'
 import { getToday, getYesterday } from '../../lib/dateutils'
-import {
-  firstGameDate,
-  getLastGameDate,
-  isValidGameDate,
-  periodInDays,
-} from '../../lib/words'
+import { getLastGameDate, isValidGameDate } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 
 type Props = {
@@ -46,9 +45,9 @@ export const DatePickerModal = ({
   registerLocale('locale', DATE_LOCALE)
 
   const excludedDates: Date[] = []
-  if (periodInDays > 1) {
-    let date = firstGameDate
-    for (date = firstGameDate; date < getToday(); date = addDays(date, 1)) {
+  if (GAME_PERIOD_IN_DAYS > 1) {
+    let date = FIRST_GAME_DATE
+    for (date = FIRST_GAME_DATE; date < getToday(); date = addDays(date, 1)) {
       if (!isValidGameDate(date)) {
         excludedDates.push(date)
       }
@@ -64,7 +63,7 @@ export const DatePickerModal = ({
       <div className="mx-auto flex max-w-2xl items-center justify-center space-x-4 py-5 text-left sm:w-48">
         <DatePicker
           locale="locale"
-          minDate={firstGameDate}
+          minDate={FIRST_GAME_DATE}
           maxDate={getYesterday()}
           selected={selectedDate}
           excludeDates={excludedDates}
