@@ -25,7 +25,9 @@
 }
 
 .dark {
-  --color-background: theme('colors.black');
+  --tw-ring-offset-color: var(--color-background);
+
+  --color-background: #22222f;
 
   --color-empty: theme('colors.slate.600');
   --color-filled-text: theme('colors.slate.300');
@@ -264,21 +266,21 @@ svg.cursor-pointer:hover {
 }
 
 .react-datepicker__day--selecting-range-start {
-  @apply border-2 border-indigo-600 bg-white;
+  @apply border-2 border-primary bg-white;
 }
 
 .react-datepicker__day--selecting-range-end {
-  @apply border-2 border-indigo-600 bg-white;
+  @apply border-2 border-primary bg-white;
 }
 
 .react-datepicker__day--selected {
-  @apply bg-indigo-600 text-white dark:text-white;
+  @apply bg-primary text-white dark:text-white;
 }
 
 .react-datepicker__day--range-start {
-  @apply bg-indigo-600 text-white hover:bg-white hover:text-gray-700;
+  @apply bg-primary text-white hover:bg-white hover:text-gray-700;
 }
 
 .react-datepicker__day--range-end {
-  @apply bg-indigo-600 text-white hover:bg-white hover:text-gray-700;
+  @apply bg-primary text-white hover:bg-white hover:text-gray-700;
 }

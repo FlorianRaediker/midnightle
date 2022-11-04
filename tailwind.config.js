@@ -11,7 +11,11 @@ module.exports = {
         xxshort: { raw: '(max-height: 490px)' },
       },
       colors: {
-        primary: '#83738f',
+        primary: {
+          DEFAULT: colors.purple[700],
+          hover: colors.purple[800],
+          focus: colors.purple[900],
+        },
         background: 'var(--color-background)',
 
         // cells (hover: and active: for keyboard)

@@ -116,7 +116,7 @@ export const StatsModal = ({
           <div>
             <button
               type="button"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-base"
+              className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 dark:focus:ring-offset-neutral-900 sm:text-base"
               onClick={() => {
                 shareStatus(
                   solution,

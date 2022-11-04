@@ -93,8 +93,8 @@ export const DatePickerModal = ({
                               prevMonthButtonDisabled &&
                               'cursor-not-allowed opacity-50'
                             }
-                            inline-flex rounded border border-gray-300 bg-white p-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-0
-                            dark:border-gray-600 dark:bg-slate-700 dark:text-gray-200 dark:focus:ring-blue-600
+                            inline-flex rounded border border-gray-300 bg-white p-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-0
+                            dark:border-gray-600 dark:bg-slate-700 dark:text-gray-200
                         `}
                 >
                   <ChevronLeftIcon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
@@ -109,8 +109,8 @@ export const DatePickerModal = ({
                               nextMonthButtonDisabled &&
                               'cursor-not-allowed opacity-50'
                             }
-                            inline-flex rounded border border-gray-300 bg-white p-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-0
-                            dark:border-gray-600 dark:bg-slate-700 dark:text-gray-200 dark:focus:ring-blue-600
+                            inline-flex rounded border border-gray-300 bg-white p-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-0
+                            dark:border-gray-600 dark:bg-slate-700 dark:text-gray-200
                         `}
                 >
                   <ChevronRightIcon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
@@ -124,15 +124,15 @@ export const DatePickerModal = ({
         <button
           type="button"
           disabled={!isValidGameDate(getToday())}
-          className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:border-gray-200 disabled:bg-gray-500 disabled:text-gray-900
-          disabled:focus:outline-none disabled:dark:border-gray-600 disabled:dark:bg-gray-800 disabled:dark:text-gray-400 sm:text-base"
+          className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 disabled:border-gray-200 disabled:bg-gray-500 disabled:text-gray-900
+          disabled:focus:outline-none dark:focus:ring-offset-neutral-900 disabled:dark:border-gray-600 disabled:dark:bg-gray-800 disabled:dark:text-gray-400 sm:text-base"
           onClick={() => handleSelectDate(getToday())}
         >
           {DATEPICKER_CHOOSE_TEXT} {DATEPICKER_TODAY_TEXT}
         </button>
         <button
           type="button"
-          className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 "
+          className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
           disabled={selectedDate >= getToday()}
           onClick={() => handleSelectDate(selectedDate)}
         >
