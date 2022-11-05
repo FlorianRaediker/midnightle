@@ -10,7 +10,7 @@ export const DISCOURAGE_INAPP_BROWSERS = true
 export const ENABLE_MIGRATE_STATS = true
 export const BLOWFISH_KEY = 'pWWcTC3f*KcIwpcy@Qp*=]`Hf&xFQR'
 export const BLOWFISH_IV = 'n01S7}63'
-export const ENABLE_ARCHIVED_GAMES = false
+export const ENABLE_ARCHIVED_GAMES = true
 export const DATE_LOCALE = enUS
 export const FIRST_GAME_DATE = new Date(2022, 10, 4)
 export const GAME_PERIOD_IN_DAYS = 1
