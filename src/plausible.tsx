@@ -22,6 +22,20 @@ export function initPlausible() {
   if (PLAUSIBLE_TRACK_OUTBOUND) enableAutoOutboundTracking()
 }
 
+export function plausibleSettings(
+  theme: string,
+  gameMode: string,
+  isHighContrastMode: boolean
+) {
+  plausible('Settings', {
+    props: {
+      theme,
+      'game mode': gameMode,
+      'high contrast': isHighContrastMode ? 'enabled' : 'disabled',
+    },
+  })
+}
+
 function plausible(
   eventName: string,
   options?: EventOptions,

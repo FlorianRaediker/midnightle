@@ -53,7 +53,7 @@ import {
   solutionGameDate,
   unicodeLength,
 } from './lib/words'
-import plausible from './plausible'
+import plausible, { plausibleSettings } from './plausible'
 
 function App() {
   const isLatestGame = getIsLatestGame()
@@ -109,6 +109,16 @@ function App() {
       ? localStorage.getItem('gameMode') === 'hard'
       : false
   )
+
+  useEffect(() => {
+    // send settings via Plausible once
+    const theme = localStorage.getItem('theme')
+    plausibleSettings(
+      theme ? theme : prefersDarkMode ? 'system dark' : 'system light',
+      isHardMode ? 'hard' : 'normal',
+      isHighContrastMode
+    )
+  }, [])
 
   useEffect(() => {
     // if no game state on load,
@@ -254,7 +264,7 @@ function App() {
 
       const reportGameToPlausible = (stats: GameStats, won: boolean) => {
         if (PLAUSIBLE_TRACK_GAMES) {
-          plausible('Game', {
+          plausible(isHardMode ? 'Game Hard' : 'Game', {
             props: {
               tries: won ? guesses.length + 1 : 'X',
               guesses: [...guesses, currentGuess].join(','),
