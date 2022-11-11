@@ -36,10 +36,11 @@ import { useAlert } from './context/AlertContext'
 import { isInAppBrowser } from './lib/browser'
 import {
   GameStats,
-  getStoredIsHighContrastMode,
+  gameModeSetting,
+  isHighContrastSetting,
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
-  setStoredIsHighContrastMode,
+  themeSetting,
 } from './lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -53,14 +54,11 @@ import {
   solutionGameDate,
   unicodeLength,
 } from './lib/words'
-import plausible, { plausibleSettings } from './plausible'
+import plausible from './plausible'
 
 function App() {
   const isLatestGame = getIsLatestGame()
   const gameDate = getGameDate()
-  const prefersDarkMode = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  ).matches
 
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
@@ -73,15 +71,9 @@ function App() {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem('theme')
-      ? localStorage.getItem('theme') === 'dark'
-      : prefersDarkMode
-      ? true
-      : false
-  )
+  const [isDarkMode, setIsDarkMode] = useState(themeSetting.get() === 'dark')
   const [isHighContrastMode, setIsHighContrastMode] = useState(
-    getStoredIsHighContrastMode()
+    isHighContrastSetting.get()
   )
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
@@ -104,21 +96,7 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
-  const [isHardMode, setIsHardMode] = useState(
-    localStorage.getItem('gameMode')
-      ? localStorage.getItem('gameMode') === 'hard'
-      : false
-  )
-
-  useEffect(() => {
-    // send settings via Plausible once
-    const theme = localStorage.getItem('theme')
-    plausibleSettings(
-      theme ? theme : prefersDarkMode ? 'system dark' : 'system light',
-      isHardMode ? 'hard' : 'normal',
-      isHighContrastMode
-    )
-  }, [])
+  const [isHardMode, setIsHardMode] = useState(gameModeSetting.get() === 'hard')
 
   useEffect(() => {
     // if no game state on load,
@@ -155,13 +133,13 @@ function App() {
 
   const handleDarkMode = (isDark: boolean) => {
     setIsDarkMode(isDark)
-    localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    themeSetting.set(isDark ? 'dark' : 'light')
   }
 
   const handleHardMode = (isHard: boolean) => {
     if (guesses.length === 0 || localStorage.getItem('gameMode') === 'hard') {
       setIsHardMode(isHard)
-      localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
+      gameModeSetting.set(isHard ? 'hard' : 'normal')
     } else {
       showErrorAlert(HARD_MODE_ALERT_MESSAGE)
     }
@@ -169,7 +147,7 @@ function App() {
 
   const handleHighContrastMode = (isHighContrast: boolean) => {
     setIsHighContrastMode(isHighContrast)
-    setStoredIsHighContrastMode(isHighContrast)
+    isHighContrastSetting.set(isHighContrast)
   }
 
   const clearCurrentRowClass = () => {

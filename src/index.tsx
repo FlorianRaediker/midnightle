@@ -5,7 +5,13 @@ import ReactDOM from 'react-dom'
 
 import App from './App'
 import { AlertProvider } from './context/AlertContext'
-import { initPlausible } from './plausible'
+import {
+  gameModeSetting,
+  isHighContrastSetting,
+  isSystemDark,
+  themeSetting,
+} from './lib/localStorage'
+import { initPlausible, plausibleSettings } from './plausible'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
@@ -18,6 +24,14 @@ ReactDOM.render(
 )
 
 initPlausible()
+
+// send settings via Plausible once
+const theme = themeSetting._getRaw()
+plausibleSettings(
+  theme != null ? theme : isSystemDark ? 'system dark' : 'system light',
+  gameModeSetting.get(),
+  isHighContrastSetting.get()
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

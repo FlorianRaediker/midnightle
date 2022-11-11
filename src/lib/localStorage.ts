@@ -1,6 +1,5 @@
 const gameStateKey = 'gameState'
 const archiveGameStateKey = 'archiveGameState'
-const highContrastKey = 'highContrast'
 
 export type StoredGameState = {
   guesses: string[]
@@ -41,15 +40,54 @@ export const loadStatsFromLocalStorage = () => {
   return stats ? (JSON.parse(stats) as GameStats) : null
 }
 
-export const setStoredIsHighContrastMode = (isHighContrast: boolean) => {
-  if (isHighContrast) {
-    localStorage.setItem(highContrastKey, '1')
-  } else {
-    localStorage.removeItem(highContrastKey)
+function createSetting<T extends string>(
+  key: string,
+  defaultValue: T,
+  allowedValues: T[]
+) {
+  return {
+    get: (): T => {
+      const value = localStorage.getItem(key) || defaultValue
+      if ((allowedValues as string[]).includes(value)) {
+        return value as T
+      }
+      return defaultValue
+    },
+    _getRaw: () => localStorage.getItem(key),
+    set: (value: T) => {
+      localStorage.setItem(key, value)
+    },
   }
 }
 
-export const getStoredIsHighContrastMode = () => {
-  const highContrast = localStorage.getItem(highContrastKey)
-  return highContrast === '1'
+function createBooleanSetting(key: string, defaultValue: boolean = false) {
+  return {
+    get: (): boolean => localStorage.getItem(key) === '1' || defaultValue,
+    set: (value: boolean) => {
+      if (value) {
+        localStorage.setItem(key, '1')
+      } else {
+        localStorage.removeItem(key)
+      }
+    },
+  }
 }
+
+export const isSystemDark =
+  'matchMedia' in window
+    ? window.matchMedia('(prefers-color-scheme: dark)').matches
+    : false
+
+export const themeSetting = createSetting<'light' | 'dark'>(
+  'theme',
+  isSystemDark ? 'dark' : 'light',
+  ['light', 'dark']
+)
+
+export const gameModeSetting = createSetting<'normal' | 'hard'>(
+  'gameMode',
+  'normal',
+  ['normal', 'hard']
+)
+
+export const isHighContrastSetting = createBooleanSetting('highContrast', false)
