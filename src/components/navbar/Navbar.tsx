@@ -7,6 +7,7 @@ import {
 
 import { ENABLE_ARCHIVED_GAMES } from '../../constants/settings'
 import { GAME_TITLE } from '../../constants/strings'
+import { solutionIndex } from '../../lib/words'
 
 type Props = {
   setIsInfoModalOpen: (value: boolean) => void
@@ -28,7 +29,7 @@ export const Navbar = ({
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
-        {ENABLE_ARCHIVED_GAMES && (
+        {ENABLE_ARCHIVED_GAMES && solutionIndex > 0 && (
           <CalendarIcon
             className="ml-auto h-6 w-6 cursor-pointer dark:stroke-white"
             onClick={() => setIsDatePickerModalOpen(true)}
