@@ -12,7 +12,7 @@ export const BLOWFISH_KEY = 'pWWcTC3f*KcIwpcy@Qp*=]`Hf&xFQR'
 export const BLOWFISH_IV = 'n01S7}63'
 export const ENABLE_ARCHIVED_GAMES = true
 export const DATE_LOCALE = enUS
-export const FIRST_GAME_DATE = new Date(2022, 10, 4)
+export const FIRST_GAME_DATE = new Date(2022, 10, 20)
 export const GAME_PERIOD_IN_DAYS = 1
 export const PLAUSIBLE_ENABLED = !!process.env.REACT_APP_PLAUSIBLE_DOMAIN
 export const PLAUSIBLE_OPTIONS: PlausibleInitOptions = {
