@@ -1,4 +1,4 @@
-import { ClockIcon } from '@heroicons/react/outline'
+import { CalendarIcon, ClockIcon } from '@heroicons/react/outline'
 import { format } from 'date-fns'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { useEffect, useState } from 'react'
@@ -7,6 +7,7 @@ import Div100vh from 'react-div-100vh'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
+import { BaseModal } from './components/modals/BaseModal'
 import { DatePickerModal } from './components/modals/DatePickerModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { MigrateStatsModal } from './components/modals/MigrateStatsModal'
@@ -54,6 +55,7 @@ import {
   solutionGameDate,
   unicodeLength,
 } from './lib/words'
+import { getIndex } from './lib/words'
 import plausible from './plausible'
 
 function App() {
@@ -65,6 +67,7 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState<boolean | null>(null)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isDatePickerModalOpen, setIsDatePickerModalOpen] = useState(false)
   const [isMigrateStatsModalOpen, setIsMigrateStatsModalOpen] = useState(false)
@@ -107,6 +110,12 @@ function App() {
       }, WELCOME_INFO_MODAL_MS)
     }
   })
+
+  useEffect(() => {
+    if (isNewsModalOpen == null && isLatestGame && getIndex(gameDate) >= 154) {
+      setIsNewsModalOpen(true)
+    }
+  }, [isLatestGame, gameDate, isNewsModalOpen])
 
   useEffect(() => {
     DISCOURAGE_INAPP_BROWSERS &&
@@ -320,6 +329,30 @@ function App() {
             isOpen={isInfoModalOpen}
             handleClose={() => setIsInfoModalOpen(false)}
           />
+          <BaseModal
+            isOpen={isNewsModalOpen == null ? false : isNewsModalOpen}
+            handleClose={() => setIsNewsModalOpen(false)}
+            title={'Goodbye, goodbye, goodbye'}
+          >
+            <p className="mb-2 text-gray-500 dark:text-gray-300">
+              Dear Readers! They said the end is coming, because Midnightle has
+              run out of words.
+            </p>
+            <p className="mb-2 text-gray-500 dark:text-gray-300">
+              If you just want to stay in that Lavender Haze, the words will
+              keep repeating.
+              <br />
+              And if you're still bejeweled, every past game is available in the
+              archive{' '}
+              <CalendarIcon className="inline-block h-4 w-4 align-[-0.075em] dark:stroke-white" />
+              .
+            </p>
+            <p className="text-gray-500 dark:text-gray-300">
+              A big thank you to everyone who played, especially the few
+              Masterminds who completed almost every Midnightle.
+              <br />I hope you all enjoyed it 💜
+            </p>
+          </BaseModal>
           <StatsModal
             isOpen={isStatsModalOpen}
             handleClose={() => setIsStatsModalOpen(false)}
